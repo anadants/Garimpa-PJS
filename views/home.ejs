@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Sistema de Gerenciamento de Usuários</title>
+        <style>
+           
+            body {
+                background-color: #ffffff; 
+                font-family: Arial, sans-serif;
+                margin: 0;
+                padding: 0;
+            }
+
+            
+            table {
+                font-family: Arial, sans-serif;
+                border-collapse: collapse;
+                width: 100%;
+                background-color: #ffffff; 
+            }
+
+            td,
+            th {
+                border: 1px solid #dddddd;
+                text-align: left;
+                padding: 8px;
+            }
+
+            tr:nth-child(even) {
+                background-color: #f2f2f2; 
+            }
+
+            tr:nth-child(odd) {
+                background-color: #ffffff; 
+            }
+
+            
+            button {
+                background-color: #1a3dda; 
+                color: white;
+                padding: 10px 15px;
+                border: none;
+                cursor: pointer;
+                margin: 5px;
+            }
+
+            button:hover {
+                background-color: #727272; 
+            }
+
+            
+            h2 {
+                text-align: center;
+                color: #333;
+                margin-top: 20px;
+            }
+
+        </style>
+    </head>
+
+    <body>
+        <h2>Sistema de Gerenciamento de Usuários</h2>
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Email</th>
+                <th>Data</th>
+                <th>Gênero</th>
+                <th>Excluir</th>
+            </tr>
+            <% data.forEach(element => { %>
+            <tr>
+                <td><%= element.id %></td>
+                <td><%= element.nome %></td>
+                <td><%= element.email %></td>
+                <td><%= element.data_ %></td>
+                <td><%= element.genero %></td>
+                <td>
+                    <form action="/delete" method="post">
+                        <input type="text" style="display: none" name="id" value="<%= element.id %>"/>
+                        <button type="submit">Deletar</button>
+                    </form>
+                </td>
+            </tr>
+            <% }) %>
+        </table>
+
+        <br><br>
+
+        <!-- Botões de navegação -->
+        <a href="/adicionar">
+            <button>Adicionar</button>
+        </a>
+
+        <a href="/atualizar">
+            <button>Atualizar</button>
+        </a>
+
+        <a href="/json">
+            <button>Json</button>
+        </a>
+    </body>
+</html>
